@@ -3,6 +3,7 @@ import React, { Component, lazy, Suspense } from 'react'
 import './App.css'
 import Count from './Count.jsx'
 import CountHooks from './CountHooks.jsx'
+import TodoList from './TodoList.jsx'
 const Add = lazy(() => import(/*webpackChunkName:"about"*/'./Add.jsx'))
 // ErrorBoundary
 // componentDidCatch
@@ -26,7 +27,8 @@ class App extends Component {
       }
     return (
       <div>
-          <CountHooks />
+          <TodoList />
+          {/* <CountHooks /> */}
           {/* <Count></Count> */}
         {/* <Suspense fallback = {<div>loading</div>}>
           <Add defaultCount={2}></Add>

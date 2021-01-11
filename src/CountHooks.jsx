@@ -1,8 +1,7 @@
 /* 
 * 学习memo useMemo useCallback 
 * 学习useRef ==> 如何使用？ ==> useRef要用在类组件、 countRef.current拿到组件 
-* 自定义HOOKS ==> 写了哪些自定义hooks函数 ==> useNum useSize
-*
+* 自定义HOOKS ==> 写了哪些自定义hooks函数？ ==> useNum useSize
 */
 
 import React, { useState, useMemo, memo, useCallback, useRef, PureComponent, useEffect } from 'react'
@@ -56,11 +55,13 @@ function useSize() {
     },[])
 
     useEffect(() => {
+        // componentDidMount()
         window.document.addEventListener('resize', onResize, false)
+        // componentWillUnmount()
         return () => {
             window.removeEventListener('resize', onResize, false)
         }
-    }, [])
+    }, [])// 有参数==》只在第一次render后调用一次 ; 没有[]参数==》每次render都会调用
     return size;
 }
 
@@ -78,12 +79,12 @@ function Counter() {
         return count * 2
     }, [count])
     // const clickEvent = useMemo(() => {
-    //     console.log('click了H1')
+    //     console.log('click了h1')
     // },[])
 
     // useCallback
     const clickEvent = useCallback(() => {
-        console.log('click了H1')
+        console.log('click了h1')
     }, [])
 
     // useRef
